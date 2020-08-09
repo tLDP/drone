@@ -1,0 +1,12 @@
+docker run \
+  --volume=/var/snap/docker/common/data/drone:/data \
+  --env=DRONE_GITHUB_CLIENT_ID= \
+  --env=DRONE_GITHUB_CLIENT_SECRET= \
+  --env=DRONE_RPC_SECRET= \
+  --env=DRONE_SERVER_HOST=drone.tldp.org \
+  --env=DRONE_SERVER_PROTO=https \
+  --publish=80:80 \
+  --restart=always \
+  --detach=true \
+  --name=drone \
+  drone/drone:1

@@ -1,0 +1,16 @@
+docker run \
+  -v /run/docker.sock:/var/run/docker.sock \
+  --env=DRONE_RPC_HOST=drone.tldp.org \
+  --env=DRONE_RPC_PROTO=https \
+  --env=DRONE_RPC_SECRET= \
+  --env=DRONE_RUNNER_CAPACITY=2 \
+  --env=DRONE_RUNNER_NAME=imao \
+  --env=DRONE_RUNNER_VOLUMES=/var/snap/docker/common/ldp:/LDP \
+  --env=DRONE_CPU_SET=12,13,14,15,16,17 \
+  --env=DRONE_MEMORY_LIMIT=7500000000 \
+  --env=DRONE_MEMORY_SWAP_LIMIT=7500000001 \
+  --publish=3000:3000 \
+  --restart=always \
+  --detach=true \
+  --name=runner \
+  drone/drone-runner-docker:1
