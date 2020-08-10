@@ -1,0 +1,18 @@
+[Unit]
+# cd /etc/systemd/system
+# systemctl enable /opt/drone/ldp-www.service
+# systemctl start ldp-www
+
+Description=LDP Builder WWW server
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m http.server -d /LDP/WWW --bind 10.77.1.18 9999
+Restart=on-failure
+RestartSec=60
+User=nobody
+
+[Install]
+WantedBy=multi-user.target
+
